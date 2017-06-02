@@ -1,0 +1,228 @@
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.wrap {
+    padding-top: 25px;
+}
+
+.phone-box {
+    margin-bottom: 15px;
+    height: 150px;
+    box-shadow: 0 5px 5px -2px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.phone-box:hover {
+    cursor: pointer;
+    box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.4);
+    background: #f5f5f5;
+    transition: all 0.3s;
+}
+
+.phone-box .photo {
+    padding: 0;
+}
+
+.phone-box .photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.phone-info {
+    padding: 10px 15px;
+}
+
+.phoneOpen {
+    height: 100vh;
+}
+
+.phoneImg img {
+    display: block;
+    width: 100%;
+}
+
+.phoneOpen h1 {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px 5px;
+}
+
+.phoneOpen span {
+    font-size: 20px;
+    color: green;
+}
+
+.btn-back,
+.btn-add {
+    text-align: center;
+    margin: 10px auto;
+    padding: 10px 15px;
+    border-bottom: 1px solid #aaa;
+    border-left: 1px solid #aaa;
+    border-right: 1px solid #aaa;
+    transition: all 0.3s;
+}
+
+.btn-back:hover {
+    cursor: pointer;
+    color: #fff;
+    background: #1888d9;
+    transition: all 0.3s;
+}
+
+.btn-add:hover {
+    cursor: pointer;
+    color: #fff;
+    background: #33b850;
+    transition: all 0.3s;
+}
+
+.btn-add {
+    font-size: 20px;
+}
+
+.bg-popup {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(77, 79, 97, 0.7);
+}
+
+.active {
+    display: block
+}
+
+.popup-form {
+    position: relative;
+    max-width: 550px;
+    width: 50%;
+    margin: 5% auto;
+    padding: 35px;
+    background: #fff;
+}
+
+.dagger {
+    display: none;
+    float: right;
+    position: relative;
+    width: 60px;
+    height: 45px;
+    top: 10px;
+    padding: 10px 10px;
+}
+
+.dagger {
+    display: block;
+    top: -15px;
+    right: -30px;
+}
+
+.dagger:hover {
+    cursor: pointer;
+}
+
+.dagger span {
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 4px;
+    background: #1888d9;
+    border-radius: 20px;
+}
+
+.dagger span:nth-child(2) {
+    display: none;
+}
+
+.close-burger .burger span {
+    top: 10px;
+}
+
+.dagger span:nth-child(1) {
+    transform: rotate(45deg);
+    transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -ms-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+}
+
+.dagger span:nth-child(3) {
+    transform: rotate(-45deg);
+    transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -ms-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+}
+
+.box-form {
+    max-width: 455px;
+    margin: 0 auto;
+}
+
+.box-form form label {
+    margin-bottom: 15px;
+}
+
+.box-form form label,
+.box-form form label input,
+.box-form form label textarea {
+    display: block;
+    width: 100%;
+}
+
+.box-form form label input,
+.box-form form label textarea {
+    padding: 6px 15px;
+    color: #6e6e6e;
+    font-family: 'regular';
+    border: 1px solid #1888d9;
+    outline: none;
+}
+
+.box-form form label input:focus,
+.box-form form label textarea:focus {
+    box-shadow: 0 0 5px #1888d9;
+    transition: width .4s;
+    -webkit-transition: width .4s;
+    -moz-transition: width .4s;
+    -ms-transition: width .4s;
+    -o-transition: width .4s
+}
+
+.box-form form .button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-family: 'medium';
+    text-align: center;
+    color: #fff;
+    border: 0px;
+    background: #1888d9;
+    transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -ms-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+}
+
+.box-form form .button:hover {
+    cursor: pointer;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -ms-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+}
