@@ -23,12 +23,14 @@ body {
 
 .phone-box .photo {
     padding: 0;
+    height:100%;
 }
 
 .phone-box .photo img {
     display: block;
-    width: 100%;
+    width: auto;
     height: 100%;
+    margin:0 auto;
 }
 
 .phone-info {
@@ -56,6 +58,7 @@ body {
     color: green;
 }
 
+.btn-sort,
 .btn-back,
 .btn-add {
     text-align: center;
@@ -67,6 +70,7 @@ body {
     transition: all 0.3s;
 }
 
+.btn-sort:hover,
 .btn-back:hover {
     cursor: pointer;
     color: #fff;
@@ -83,6 +87,12 @@ body {
 
 .btn-add {
     font-size: 20px;
+}
+
+.btn-sort {
+    margin: 10px 10px 10px 0;
+    padding: 15px;
+    text-align: center;
 }
 
 .bg-popup {
