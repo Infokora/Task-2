@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-export default({togglePopup, addPhone, that}) => {
+export default( {togglePopup, addPhone, that, printImg} ) => {
     return (
         <div
             className="bg-popup"
@@ -20,11 +20,18 @@ export default({togglePopup, addPhone, that}) => {
                         action=""
                         method=""
                         ref={(form) => {
-                        that.addForm = form
-                        
-                    }}
-                        onSubmit={addPhone}>
-                        <label htmlFor=""><input name="img" type="text" placeholder="Введіть адресу картинки" required/></label>
+                            that.addForm = form
+                        }}
+                        onSubmit={addPhone}
+                        onChange={printImg}
+                        >
+                        <label htmlFor="">
+                            <input name="img" type="file" placeholder="Введіть адресу картинки" required
+                            ref={(input) => {
+                                that.inputImg = input
+                            }}/>
+                            <img className="imgBox" src="" title="Загрузите фото"></img>
+                        </label>
                         <label htmlFor=""><input name="name" type="text" placeholder="Назва телефона" required/></label>
                         <label htmlFor=""><input name="price" type="number" placeholder="Ціна телефона" required/></label>
                         <button className="button">Створити новий телефон</button>

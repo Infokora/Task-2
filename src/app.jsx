@@ -98,9 +98,7 @@ class App extends Component {
             .map(function (e) {
                 return + e.id
             });
-
         let max = arrId.length;
-
         for (var i = 0; i < max; i++) {
             if (id < arrId[i]) {
                 id = arrId[i];

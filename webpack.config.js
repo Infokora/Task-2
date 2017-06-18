@@ -7,7 +7,6 @@ module.exports = {
         path: __dirname + '/public'
     },
     watch: true,
-
     module: {
         loaders: [{
             test: /\.js?/,

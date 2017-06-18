@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default ( {phone, update, index} ) => {
+export default ( {phone, index} ) => {
     return (
-        <div className="phone-box col-sm-12" data-id={phone.id} key={index} onClick={() => {update({ openPhone:true, focus: index}) }}>
+        <Link to={`/phone/${phone.id}`} className="phone-box col-sm-12" data-id={phone.id} key={index} >
             <div className="photo col-sm-3">
                 <img src={phone.img} alt={phone.name}/>
             </div>
@@ -14,6 +15,6 @@ export default ( {phone, update, index} ) => {
                     <h5>{phone.price} грн</h5>
                 </div>
             </div>
-        </div>
+        </Link>
     )
 };

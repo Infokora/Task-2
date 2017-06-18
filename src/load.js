@@ -1,8 +1,8 @@
 
-export default (url) =>{
+export default () =>{
     return new Promise( (success, fail) => {
         const req = new XMLHttpRequest();
-        req.open('GET', url, true);
+        req.open('GET', './src/phone.json', true);
 
         req.addEventListener('load', () => {
             if(req.status >= 200 && req.status < 400){

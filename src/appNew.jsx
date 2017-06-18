@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDom from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route} from 'react-router-dom';
 
 import load from './load.js';
 import PhoneList from './phoneList.jsx';
@@ -10,7 +10,6 @@ import AddPhone from './addPhone.jsx';
 class App extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             phone: null,
             phoneNew: undefined,
@@ -23,53 +22,50 @@ class App extends Component {
         load(this.props.phone).then( phones => {
             this.setState({
                 phone: JSON.parse(phones)
-            })
+            });
+            this.props = {
+                phone: JSON.parse(phones)
+            };
         });
     };
 
-    updateData(config) {
-        this.setState(config);
-    }
-
     togglePopup() {
-        console.log(this);
         this.popup.classList.toggle('active');
     };
 
     createNewId() {
-        var id = 0,
-            arrId = [];
-
-        arrId = this
-            .state
-            .phone
-            .map(function (e) {
-                return + e.id
-            });
-        let max = arrId.length;
-        for (var i = 0; i < max; i++) {
-            if (id < arrId[i]) {
-                id = arrId[i];
+        var id = 0;
+        this.state.phone.forEach(function (e) {
+            if (id < e.id) {
+                id = +e.id;
             }
-        }
-
+        });
         return id + 1
-    }
+    };
+
+    printImg(){
+        var reader = new FileReader();
+        reader.onload = (e) => {
+            this.inputImg.nextElementSibling.setAttribute('src', e.target.result);
+        };
+        reader.readAsDataURL(this.inputImg.files[0]);
+    };
 
     addPhone(e) {
         e.preventDefault();
 
-        let max = this.addForm.length,
-            phone = [{}];
+        let max = this.addForm.length-1,
+            phone = {};
 
         for (var i = 0; i < max; i++) {
-            phone[0][this.addForm[i].name] = this.addForm[i].value;
+            phone[this.addForm[i].name] = this.addForm[i].value;
         }
-        phone[0].id = this.createNewId();
-        phone = phone.concat(this.state.phone);
+        phone.id = this.createNewId();
 
-        this.setState({phone: phone, phoneNew: phone});
-    }
+        this.setState({
+            phone: this.state.phone.concat(phone)
+        });
+    };
 
     render() {
         return (
@@ -79,14 +75,17 @@ class App extends Component {
                         Добавити телефон новий
                     </div>
                 </div>
-
                 {
-                    this.state.openPhone ?
-                        <ActivePhone data={this.state.phone} active={this.state.focus} update={this.updateData.bind(this)}/>
-                    : <PhoneList data={this.state.phone} update={this.updateData.bind(this)}/>
+                    <Switch>
+                        <Route path={'/home'} render={(props) => {
+                            return <PhoneList props={props} data={this.state.phone}/>
+                        }}/>
+                        <Route path={'/phone/:active'} render={(props) => {
+                            return <ActivePhone props={props} data={this.state.phone}/>
+                        }}/> 
+                    </Switch>
                 }
-
-                <AddPhone that={this} togglePopup={this.togglePopup.bind(this)} addPhone={this.addPhone.bind(this)} />
+                <AddPhone that={this} togglePopup={this.togglePopup.bind(this)} addPhone={this.addPhone.bind(this)} printImg={this.printImg.bind(this)} />
             </div>
         )
     };
@@ -94,9 +93,8 @@ class App extends Component {
 
 var box = document.getElementById('container');
 ReactDom.render(
-    <BrowserRouter>
-        <Route path='/'>
-            <App phone='src/phone.json'></App>
-        </Route>
-    </BrowserRouter>,
+    <HashRouter>
+        <App/>
+    </HashRouter>
+    ,
      box)
